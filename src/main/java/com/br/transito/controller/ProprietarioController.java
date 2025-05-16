@@ -1,7 +1,7 @@
 package com.br.transito.controller;
 
 import com.br.transito.domain.model.Proprietario;
-import com.br.transito.domain.model.ProprietarioRepository;
+import com.br.transito.domain.repository.ProprietarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
