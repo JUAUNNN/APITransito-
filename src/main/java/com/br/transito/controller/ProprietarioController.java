@@ -15,7 +15,7 @@ public class ProprietarioController {
 
     @GetMapping("/proprietarios ")
     public List<Proprietario> listar(){
-    return proprietarioRepository.findAll();
-
+      return proprietarioRepository.findAll();
+        //return  proprietarioRepository.findByNome("João Paulo Vieira");--Teste de costumização.
     }
 }
