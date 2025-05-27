@@ -2,6 +2,7 @@ package com.br.transito.controller;
 
 import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.repository.ProprietarioRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class ProprietarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Proprietario cadastrar (@RequestBody Proprietario proprietario) {
+    public Proprietario cadastrar (@Valid @RequestBody Proprietario proprietario) {
         return proprietarioRepository.save(proprietario);
     }
 
