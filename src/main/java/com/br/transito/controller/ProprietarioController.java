@@ -2,6 +2,7 @@ package com.br.transito.controller;
 
 import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.repository.ProprietarioRepository;
+import com.br.transito.domain.service.CadastroProprietarioService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("/proprietarios")
 public class ProprietarioController {
 
+    private final CadastroProprietarioService cadastroProprietarioService;
     private final ProprietarioRepository proprietarioRepository;
 
     @GetMapping
@@ -32,7 +34,7 @@ public class ProprietarioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Proprietario cadastrar (@Valid @RequestBody Proprietario proprietario) {
-        return proprietarioRepository.save(proprietario);
+        return cadastroProprietarioService.salvar(proprietario);
     }
 
     @PutMapping("/{proprietarioId}")
@@ -40,9 +42,8 @@ public class ProprietarioController {
         if (!proprietarioRepository.existsById(proprietarioId)){
             return ResponseEntity.notFound().build();
         }
-
         proprietario.setId(proprietarioId);
-        Proprietario proprietarioAtualizado = proprietarioRepository.save(proprietario);
+        Proprietario proprietarioAtualizado = cadastroProprietarioService.salvar(proprietario);
 
         return ResponseEntity.ok(proprietarioAtualizado);
     }
@@ -53,7 +54,7 @@ public class ProprietarioController {
             return ResponseEntity.notFound().build();
         }
 
-        proprietarioRepository.deleteById(proprietarioId);
+        cadastroProprietarioService.excluir(proprietarioId);
         return ResponseEntity.noContent().build();
     }
 }
