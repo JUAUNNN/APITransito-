@@ -54,7 +54,6 @@ public class ProprietarioController {
         if (!proprietarioRepository.existsById(proprietarioId)){
             return ResponseEntity.notFound().build();
         }
-
         cadastroProprietarioService.excluir(proprietarioId);
         return ResponseEntity.noContent().build();
     }
