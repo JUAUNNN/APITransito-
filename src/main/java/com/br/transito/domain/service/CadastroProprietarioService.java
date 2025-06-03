@@ -20,7 +20,6 @@ public class CadastroProprietarioService {
         boolean emailEmUso =  proprietarioRepository.findByEmail(proprietario.getEmail())
                 .filter(p -> !p.equals(proprietario))
                 .isPresent();
-
         if (emailEmUso){
             throw new NegocioException("Já existe um proprietário cadastrado com este e-mail!");
         }

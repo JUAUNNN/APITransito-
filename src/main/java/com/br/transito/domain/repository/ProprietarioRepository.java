@@ -12,5 +12,4 @@ public interface ProprietarioRepository extends JpaRepository<Proprietario, Long
 
     List<Proprietario>findByNome(String nome);
     Optional<Proprietario>findByEmail(String email);
-
 }
