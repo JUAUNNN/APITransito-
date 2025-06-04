@@ -1,6 +1,9 @@
 package com.br.transito.controller;
+import com.br.transito.domain.exception.NegocioException;
 import com.br.transito.domain.model.Veiculo;
 import com.br.transito.domain.repository.VeiculoRepository;
+import com.br.transito.domain.service.RegistroVeiculoService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,8 @@ import java.util.List;
 @RequestMapping("/veiculos")
 public class VeiculoController {
 
-    private VeiculoRepository veiculoRepository;
+    private final VeiculoRepository veiculoRepository;
+    private final RegistroVeiculoService registroVeiculoService;
 
     @GetMapping
     public List<Veiculo> listar(){
@@ -29,8 +33,13 @@ public class VeiculoController {
 
    @PostMapping
    @ResponseStatus(HttpStatus.CREATED)
-   public Veiculo adicionarCarro(@RequestBody Veiculo veiculo) {
-        return veiculoRepository.save(veiculo);
+   public Veiculo adicionarCarro(@Valid @RequestBody Veiculo veiculo) {
+        return registroVeiculoService.cadastrar(veiculo);
    }
+
+    @ExceptionHandler(NegocioException.class)
+    public ResponseEntity<String> capturar(NegocioException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 
 }
