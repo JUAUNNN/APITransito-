@@ -36,10 +36,4 @@ public class VeiculoController {
    public Veiculo adicionarCarro(@Valid @RequestBody Veiculo veiculo) {
         return registroVeiculoService.cadastrar(veiculo);
    }
-
-    @ExceptionHandler(NegocioException.class)
-    public ResponseEntity<String> capturar(NegocioException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
 }

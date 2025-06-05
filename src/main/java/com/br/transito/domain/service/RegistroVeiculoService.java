@@ -30,7 +30,7 @@ public class RegistroVeiculoService {
                         .filter(v -> !v.equals(novoVeiculo))
                                 .isPresent();
         if (placaCadastrada) {
-            throw new NegocioException("Já existe um veiculo cadastrado com está placa!");
+            throw new NegocioException("Já existe um veiculo cadastrado com esta placa!");
         }
 
         Proprietario proprietario = cadastroProprietarioService.buscar(novoVeiculo.getProprietario().getId());
