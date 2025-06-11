@@ -41,7 +41,7 @@ public class Veiculo {
     private String modelo;
 
     @NotBlank
-    @Pattern(regexp = "[A-Z]{3}[0-9][0-9A-Z][0-9]{2}")//Expressão regular feito para padronizar placas
+    @Pattern(regexp = "[A-Z]{3}[0-9][0-9A-Z][0-9]{2}")//Expressão regular feita nesta aplicação para padronizar placas
     private String placa;
 
     @JsonProperty(access = Access.READ_ONLY)

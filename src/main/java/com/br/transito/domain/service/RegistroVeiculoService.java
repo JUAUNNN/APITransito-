@@ -4,13 +4,11 @@ import com.br.transito.domain.exception.NegocioException;
 import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.model.StatusVeiculo;
 import com.br.transito.domain.model.Veiculo;
-import com.br.transito.domain.repository.ProprietarioRepository;
 import com.br.transito.domain.repository.VeiculoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 
