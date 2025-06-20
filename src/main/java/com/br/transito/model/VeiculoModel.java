@@ -20,4 +20,5 @@ public class VeiculoModel {
     private OffsetDateTime dataCadastro;
     private OffsetDateTime dataApreensao;
 
+
 }

@@ -4,6 +4,7 @@ import com.br.transito.domain.model.Veiculo;
 import com.br.transito.domain.repository.VeiculoRepository;
 import com.br.transito.domain.service.RegistroVeiculoService;
 import com.br.transito.model.VeiculoModel;
+import com.br.transito.model.input.VeiculoInput;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -37,7 +38,11 @@ public class VeiculoController {
 
    @PostMapping
    @ResponseStatus(HttpStatus.CREATED)
-   public VeiculoModel adicionarCarro(@Valid @RequestBody Veiculo veiculo) {
-        return veiculoAssembler.toModel(registroVeiculoService.cadastrar(veiculo));
+   public VeiculoModel adicionarCarro(@Valid @RequestBody VeiculoInput veiculoInput) {
+        Veiculo novoVeiculo = veiculoAssembler.toEntity(veiculoInput);
+        Veiculo veiculoCadastro = registroVeiculoService.cadastrar(novoVeiculo);
+
+        return veiculoAssembler.toModel(veiculoCadastro);
+
    }
 }
