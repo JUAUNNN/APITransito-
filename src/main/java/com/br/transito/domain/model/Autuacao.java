@@ -11,6 +11,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 public class Autuacao {
 
     @EqualsAndHashCode.Include
