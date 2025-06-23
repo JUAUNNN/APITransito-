@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestControllerAdvice
-public class ApiExceptionHandler  extends ResponseEntityExceptionHandler {
+public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final MessageSource messageSource;
 
@@ -50,6 +50,7 @@ public class ApiExceptionHandler  extends ResponseEntityExceptionHandler {
 
         return problemDetail;
     }
+
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ProblemDetail handleDataIntegrity(DataIntegrityViolationException e){

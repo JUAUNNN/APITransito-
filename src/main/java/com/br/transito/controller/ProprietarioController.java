@@ -1,6 +1,5 @@
 package com.br.transito.controller;
 
-import com.br.transito.domain.exception.NegocioException;
 import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.repository.ProprietarioRepository;
 import com.br.transito.domain.service.CadastroProprietarioService;
