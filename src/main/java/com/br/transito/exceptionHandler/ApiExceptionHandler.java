@@ -51,7 +51,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ProblemDetail handleDataIntegrity(DataIntegrityViolationException e){
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.CONFLICT);

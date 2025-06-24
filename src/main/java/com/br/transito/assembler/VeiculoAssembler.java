@@ -23,6 +23,7 @@ public class VeiculoAssembler {
         return modelMapper.map(veiculo, VeiculoModel.class);
     }
 
+
     public List<VeiculoModel> toCollectionModel(List<Veiculo> veiculos) {
         return veiculos.stream()
                 .map(this::toModel)
