@@ -1,6 +1,5 @@
 package com.br.transito.model;
 
-import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.model.StatusVeiculo;
 import lombok.Getter;
 import lombok.Setter;
