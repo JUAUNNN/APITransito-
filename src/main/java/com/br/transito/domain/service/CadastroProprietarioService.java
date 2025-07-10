@@ -4,10 +4,8 @@ import com.br.transito.domain.exception.NegocioException;
 import com.br.transito.domain.model.Proprietario;
 import com.br.transito.domain.repository.ProprietarioRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @AllArgsConstructor
 @Service

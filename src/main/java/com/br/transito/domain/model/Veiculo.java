@@ -22,7 +22,6 @@ public class Veiculo {
 
     @ManyToOne
     private Proprietario proprietario;
-
     private String marca;
     private String modelo;
     private String placa;
@@ -42,6 +41,5 @@ public class Veiculo {
         getAuttuacoes().add(autuacao);
         return autuacao;
     }
-
 
 }
