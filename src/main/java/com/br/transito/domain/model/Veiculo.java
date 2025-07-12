@@ -1,5 +1,6 @@
 package com.br.transito.domain.model;
 
+import com.br.transito.domain.exception.NegocioException;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class Veiculo {
     private OffsetDateTime dataCadastro;
     private OffsetDateTime dataApreensao;
 
-    @OneToMany(mappedBy = "veiculo")
+    @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL)
     private List<Autuacao> auttuacoes = new ArrayList<>();
 
     public Autuacao adicionarAutuacao(Autuacao autuacao) {
@@ -40,6 +41,19 @@ public class Veiculo {
         autuacao.setVeiculo(this);
         getAuttuacoes().add(autuacao);
         return autuacao;
+    }
+
+    public void apreender() {
+        if(estaApreendido()) {
+            throw new NegocioException("Veiculo já se encontra apreendido");
+            setStatus(StatusVeiculo.APREENDIDO);
+            setDataApreensao(OffsetDateTime.now());
+        }
+
+        public boolean estaApreendido() {
+            return StatusVeiculo.APREENDIDO.equals(getStatus());
+        }
+
     }
 
 }
