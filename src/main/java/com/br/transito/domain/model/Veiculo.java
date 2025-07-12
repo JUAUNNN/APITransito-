@@ -46,14 +46,23 @@ public class Veiculo {
     public void apreender() {
         if(estaApreendido()) {
             throw new NegocioException("Veiculo já se encontra apreendido");
-            setStatus(StatusVeiculo.APREENDIDO);
-            setDataApreensao(OffsetDateTime.now());
         }
-
-        public boolean estaApreendido() {
-            return StatusVeiculo.APREENDIDO.equals(getStatus());
-        }
-
+        setStatus(StatusVeiculo.APREENDIDO);
+        setDataApreensao(OffsetDateTime.now());
     }
+
+    public void removerApreencao() {
+        if (!estaApreendido()) {
+            throw new NegocioException("Veiculo não se encontra apreendido");
+        }
+        setStatus(StatusVeiculo.REGULAR);
+        setDataApreensao(null);
+    }
+
+    public boolean estaApreendido() {
+        return StatusVeiculo.APREENDIDO.equals(getStatus());
+    }
+
+
 
 }
