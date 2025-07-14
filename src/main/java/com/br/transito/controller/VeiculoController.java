@@ -2,6 +2,7 @@ package com.br.transito.controller;
 import com.br.transito.assembler.VeiculoAssembler;
 import com.br.transito.domain.model.Veiculo;
 import com.br.transito.domain.repository.VeiculoRepository;
+import com.br.transito.domain.service.ApreensaoVeiculoService;
 import com.br.transito.domain.service.RegistroVeiculoService;
 import com.br.transito.model.VeiculoModel;
 import com.br.transito.model.input.VeiculoInput;
@@ -21,6 +22,7 @@ public class VeiculoController {
 
     private final VeiculoRepository veiculoRepository;
     private final RegistroVeiculoService registroVeiculoService;
+    private final ApreensaoVeiculoService apreensaoVeiculoService;
     private final VeiculoAssembler veiculoAssembler;
 
     @GetMapping
@@ -45,4 +47,17 @@ public class VeiculoController {
         return veiculoAssembler.toModel(veiculoCadastro);
 
    }
+
+   @PutMapping("/{veiculoId}/apreensao")
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+   public void apreender(@PathVariable Long veiculoId) {
+        apreensaoVeiculoService.apreender(veiculoId);
+   }
+
+    @DeleteMapping("/{veiculoId}/apreensao")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removerApreender(@PathVariable Long veiculoId) {
+        apreensaoVeiculoService.removerApreencao(veiculoId);
+    }
+
 }
